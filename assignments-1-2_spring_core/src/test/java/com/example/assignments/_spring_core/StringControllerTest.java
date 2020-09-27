@@ -1,12 +1,16 @@
 package com.example.assignments._spring_core;
 
 import com.example.assignments._spring_core.Controller.StringController;
+import com.example.assignments._spring_core.Service.StringService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class StringControllerTest {
     @Test
@@ -38,6 +42,7 @@ public class StringControllerTest {
     @Test
     public void TestStringController3()
     {
+        //GIVEN
         StringController stringController = new StringController();
         String input = "Test";
 
