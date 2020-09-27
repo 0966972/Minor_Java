@@ -4,7 +4,6 @@ import java.util.HashMap;
 import org.springframework.stereotype.Service;
 
 @Service("CountWords")
-
 public class CountString {
     public CountString()
     {
@@ -13,11 +12,6 @@ public class CountString {
 
     public Integer Count(String input)
     {
-
-        if (input == null || input.isEmpty())
-        {
-            return 0;
-        }
         if(inputs.get(input) == null)
         {
             String[] words = input.split("\\s+");

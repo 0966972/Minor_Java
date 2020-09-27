@@ -1,13 +1,8 @@
 package com.example.assignments._spring_core.Controller;
-import com.example.assignments._spring_core.Service.ProfileString;
 import com.example.assignments._spring_core.Service.RevertString;
 import com.example.assignments._spring_core.Service.CountString;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class StringController {
-    @PostMapping("/Revert")
-    public String revert(@RequestBody String input)
+
+    @GetMapping("/Revert/{input}")
+    @ResponseBody
+    public String revert(@PathVariable String input)
 
     {
         RevertString revertString = new RevertString();
@@ -24,24 +21,29 @@ public class StringController {
         return Result;
     }
 
-    @PostMapping("/Upper")
-    public String Upper(@RequestBody String input)
+    @GetMapping("/Upper/{input}")
+    @ResponseBody
+    public String Upper(@PathVariable String input)
     {
         return input.toUpperCase();
     }
 
-    @PostMapping("/Count")
-    public Integer count(@RequestBody String input)
+    @GetMapping("/Count/{input}")
+    @ResponseBody
+    public Integer count(@PathVariable String input)
     {
         CountString countString = new CountString();
+        System.out.println(input);
         return countString.Count(input);
     }
+
 
     @Value("${spring.profiles.active:}")
     private String activeProfile;
 
-    @PostMapping("/Profile")
-    public String profile(@RequestBody String input)
+    @GetMapping("/Profile/{input}")
+    @ResponseBody
+    public String profile(@PathVariable String input)
     {
         if (activeProfile.equals("dev"))
         {
