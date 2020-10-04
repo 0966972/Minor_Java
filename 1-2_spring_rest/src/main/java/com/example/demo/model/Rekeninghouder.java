@@ -1,13 +1,14 @@
 package com.example.demo.model;
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Rekeninghouder {
+
     private static Integer count = 0;
-
     private Integer id;
-
     private String Voornaam;
     private String Achternaam;
     private List<Rekening> Rekening = new ArrayList<Rekening>();

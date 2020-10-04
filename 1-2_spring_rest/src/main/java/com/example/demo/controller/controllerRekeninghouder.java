@@ -41,7 +41,15 @@ public class controllerRekeninghouder {
         List<Rekening> a = _rekeningService.GetRekeningenKlant(id);
         return ResponseEntity.ok().body(a);
     }
+    @PutMapping("/{id}/rekening/{rekeningid}")
+    public ResponseEntity blokkeerrekening(@PathVariable("id") Integer id, @PathVariable("rekeningid") Integer rekeningid, @RequestBody Rekening rekening){
+        return _rekeningService.updateRekening(id,rekeningid,rekening);
 
+    }
+    @DeleteMapping("/{id}/rekening/{rekeningid}")
+    public ResponseEntity verwijderdrekening(@PathVariable("id") Integer id, @PathVariable("rekeningid") Integer rekeningid, @RequestBody Rekening rekening){
+        return _rekeningService.verwijderRekening(id, rekeningid, rekening);
+    }
 
 
 
